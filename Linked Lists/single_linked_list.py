@@ -86,6 +86,42 @@ class SingleLinkedList:
             itr = itr.next
             count += 1
 
+    def insert_after_value(self, data_after, data_to_insert):
+
+        if self.head is None:
+            return
+
+        if self.head.data == data_after:
+            self.head.next = Node(data_to_insert, self.head.next)
+            return
+
+        itr = self.head
+
+        while itr:
+            if itr.data == data_after:
+                itr.next = Node(data_to_insert, itr.next)
+                break
+    
+            itr = itr.next
+
+    def remove_by_value(self, data):
+        
+        if self.head is None:
+            return
+
+        if self.head.data == data:
+            self.head = self.head.next
+            return
+        
+        itr = self.head
+
+        while itr.next:
+            if itr.next.data == data:
+                itr.next = itr.next.next
+                break
+            
+            itr = itr.next
+
     def create_single_linked_list(self, data_list):
         self.head = None
         for data in data_list:
